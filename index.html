@@ -200,11 +200,7 @@
 
         .results-section {
             margin-top: 30px;
-            padding: 30px;
-            background: rgba(255, 255, 255, 0.95);
-            border-radius: 15px;
-            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
-            border-left: 5px solid #d4af37;
+            padding: 0;
             display: none;
         }
 
@@ -213,34 +209,128 @@
             animation: slideIn 0.5s ease-out;
         }
 
-        .result-text-container {
-            background: linear-gradient(135deg, rgba(30, 60, 114, 0.05), rgba(212, 175, 55, 0.05));
-            padding: 25px;
-            border-radius: 12px;
-            border: 2px solid rgba(30, 60, 114, 0.1);
-            font-family: 'Courier New', Monaco, monospace;
-            font-size: 14px;
-            line-height: 1.6;
-            white-space: pre-line;
+        .result-display {
+            background: rgba(255, 255, 255, 0.95);
+            border-radius: 15px;
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+            overflow: hidden;
+            border: 2px solid rgba(212, 175, 55, 0.3);
+        }
+
+        .result-header {
+            background: linear-gradient(135deg, #1e3c72, #2a5298);
+            padding: 20px;
+            text-align: center;
+            color: white;
+        }
+
+        .result-header h3 {
+            margin: 0;
+            font-size: 1.4em;
+            font-weight: 600;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+        }
+
+        .success-icon {
+            width: 24px;
+            height: 24px;
+            background: rgba(255, 255, 255, 0.2);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+        }
+
+        .result-content {
+            padding: 30px;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            direction: rtl;
+            text-align: right;
+            line-height: 2;
+            font-size: 16px;
             color: #2c3e50;
-            overflow-x: auto;
         }
 
-        .result-text-container::before {
-            content: '';
-            position: absolute;
-            top: -2px;
-            left: -2px;
-            right: -2px;
-            bottom: -2px;
-            background: linear-gradient(45deg, #d4af37, #1e3c72, #d4af37);
-            border-radius: 14px;
-            z-index: -1;
+        .result-line {
+            margin-bottom: 12px;
+            padding: 8px 0;
         }
 
-        .result-text-container {
-            position: relative;
-            background: #f8f9fa;
+        .result-line.header {
+            font-size: 1.3em;
+            font-weight: 700;
+            color: #1e3c72;
+            margin-top: 25px;
+            margin-bottom: 15px;
+            padding-bottom: 8px;
+            border-bottom: 3px solid #d4af37;
+        }
+
+        .result-line.header:first-child {
+            margin-top: 0;
+        }
+
+        .result-line.subheader {
+            font-size: 1.1em;
+            font-weight: 600;
+            color: #2a5298;
+            margin-top: 20px;
+            margin-bottom: 10px;
+        }
+
+        .result-line.separator {
+            height: 2px;
+            background: linear-gradient(90deg, transparent, #d4af37, transparent);
+            margin: 20px 0;
+            border: none;
+        }
+
+        .result-line.qualified {
+            background: linear-gradient(135deg, rgba(40, 167, 69, 0.1), rgba(32, 201, 151, 0.1));
+            color: #155724;
+            font-weight: 600;
+            padding: 12px 20px;
+            border-radius: 10px;
+            border-right: 4px solid #28a745;
+        }
+
+        .result-line.not-qualified {
+            background: linear-gradient(135deg, rgba(220, 53, 69, 0.1), rgba(200, 35, 51, 0.1));
+            color: #721c24;
+            font-weight: 600;
+            padding: 12px 20px;
+            border-radius: 10px;
+            border-right: 4px solid #dc3545;
+        }
+
+        .result-line.highlight {
+            background: linear-gradient(135deg, rgba(212, 175, 55, 0.1), rgba(30, 60, 114, 0.1));
+            padding: 10px 15px;
+            border-radius: 8px;
+            font-weight: 500;
+            border-right: 3px solid #d4af37;
+        }
+
+        .result-line.benefits {
+            background: linear-gradient(135deg, rgba(30, 60, 114, 0.05), rgba(212, 175, 55, 0.05));
+            padding: 15px 20px;
+            border-radius: 10px;
+            font-style: italic;
+            border: 1px solid rgba(212, 175, 55, 0.3);
+        }
+
+        .result-line.footer {
+            text-align: center;
+            margin-top: 30px;
+            padding-top: 20px;
+            border-top: 2px solid rgba(212, 175, 55, 0.3);
+            font-weight: 600;
+            color: #1e3c72;
+            direction: ltr;
         }
 
         @keyframes slideIn {
@@ -389,13 +479,16 @@
         </form>
 
         <div class="results-section" id="resultsSection">
-            <h3>
-                <div class="success-icon">✓</div>
-                Ranking Results
-            </h3>
-            
-            <div class="result-text-container" id="resultTextContainer">
-                <!-- Formatted text will be displayed here -->
+            <div class="result-display">
+                <div class="result-header">
+                    <h3>
+                        <div class="success-icon">✓</div>
+                        תוצאות דירוג
+                    </h3>
+                </div>
+                <div class="result-content" id="resultContent">
+                    <!-- Formatted content will be displayed here -->
+                </div>
             </div>
         </div>
     </div>
@@ -446,8 +539,44 @@
         }
 
         function displayResults(data) {
-            // Simply display the formatted text
-            document.getElementById('resultTextContainer').textContent = data.resultText;
+            const resultContent = document.getElementById('resultContent');
+            const lines = data.resultText.split('\n');
+            
+            resultContent.innerHTML = '';
+            
+            lines.forEach(line => {
+                const div = document.createElement('div');
+                div.className = 'result-line';
+                
+                // Style different types of lines
+                if (line.includes('תוצאות דירוג ספורטאי')) {
+                    div.className += ' header';
+                } else if (line.includes('פרטי הספורטאי') || line.includes('נתוני ביצועים') || line.includes('מצב דירוג') || line.includes('הטבות והזדמנויות')) {
+                    div.className += ' subheader';
+                } else if (line.includes('=')) {
+                    div.className += ' separator';
+                    div.innerHTML = ''; // Empty content for separator lines
+                    return;
+                } else if (line.includes('-')) {
+                    return; // Skip dash separators
+                } else if (line.includes('מוכשר:') && !line.includes('לא מוכשר')) {
+                    div.className += ' qualified';
+                } else if (line.includes('לא מוכשר')) {
+                    div.className += ' not-qualified';
+                } else if (line.includes('ציון סינקלייר') || line.includes('סה״כ משקל') || line.includes('סף נדרש') || line.includes('מרווח') || line.includes('פער')) {
+                    div.className += ' highlight';
+                } else if (line.includes('הטבות') && (line.includes(':') && !line.includes('הטבות והזדמנויות'))) {
+                    div.className += ' benefits';
+                } else if (line.includes('התאחדות ההרמה הישראלית')) {
+                    div.className += ' footer';
+                } else if (line.trim() === '') {
+                    return; // Skip empty lines
+                }
+                
+                div.textContent = line;
+                resultContent.appendChild(div);
+            });
+            
             showResults();
         }
 
@@ -541,6 +670,7 @@
                 lookupBtn.classList.remove('loading');
             }
         });
+
     </script>
 </body>
 </html>
