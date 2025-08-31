@@ -549,29 +549,29 @@
                 div.className = 'result-line';
                 
                 // Style different types of lines
-                if (line.includes('תוצאות דירוג ספורטאי')) {
-                    div.className += ' header';
-                } else if (line.includes('פרטי הספורטאי') || line.includes('נתוני ביצועים') || line.includes('מצב דירוג') || line.includes('הטבות והזדמנויות')) {
-                    div.className += ' subheader';
-                } else if (line.includes('=')) {
-                    div.className += ' separator';
-                    div.innerHTML = ''; // Empty content for separator lines
-                    return;
-                } else if (line.includes('-')) {
-                    return; // Skip dash separators
-                } else if (line.includes('מוכשר:') && !line.includes('לא מוכשר')) {
-                    div.className += ' qualified';
-                } else if (line.includes('לא מוכשר')) {
-                    div.className += ' not-qualified';
-                } else if (line.includes('ציון סינקלייר') || line.includes('סה״כ משקל') || line.includes('סף נדרש') || line.includes('מרווח') || line.includes('פער')) {
-                    div.className += ' highlight';
-                } else if (line.includes('הטבות') && (line.includes(':') && !line.includes('הטבות והזדמנויות'))) {
-                    div.className += ' benefits';
-                } else if (line.includes('התאחדות ההרמה הישראלית')) {
-                    div.className += ' footer';
-                } else if (line.trim() === '') {
-                    return; // Skip empty lines
-                }
+                // if (line.includes('תוצאות דירוג ספורטאי')) {
+                //     div.className += ' header';
+                // } else if (line.includes('פרטי הספורטאי') || line.includes('נתוני ביצועים') || line.includes('מצב דירוג') || line.includes('הטבות והזדמנויות')) {
+                //     div.className += ' subheader';
+                // } else if (line.includes('=')) {
+                //     div.className += ' separator';
+                //     div.innerHTML = ''; // Empty content for separator lines
+                //     return;
+                // } else if (line.includes('-')) {
+                //     return; // Skip dash separators
+                // } else if (line.includes('מוכשר:') && !line.includes('לא מוכשר')) {
+                //     div.className += ' qualified';
+                // } else if (line.includes('לא מוכשר')) {
+                //     div.className += ' not-qualified';
+                // } else if (line.includes('ציון סינקלייר') || line.includes('סה״כ משקל') || line.includes('סף נדרש') || line.includes('מרווח') || line.includes('פער')) {
+                //     div.className += ' highlight';
+                // } else if (line.includes('הטבות') && (line.includes(':') && !line.includes('הטבות והזדמנויות'))) {
+                //     div.className += ' benefits';
+                // } else if (line.includes('התאחדות ההרמה הישראלית')) {
+                //     div.className += ' footer';
+                // } else if (line.trim() === '') {
+                //     return; // Skip empty lines
+                // }
                 
                 div.textContent = line;
                 resultContent.appendChild(div);
