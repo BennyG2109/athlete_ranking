@@ -200,7 +200,7 @@
 
         .results-section {
             margin-top: 30px;
-            padding: 25px;
+            padding: 30px;
             background: rgba(255, 255, 255, 0.95);
             border-radius: 15px;
             box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
@@ -211,6 +211,36 @@
         .results-section.show {
             display: block;
             animation: slideIn 0.5s ease-out;
+        }
+
+        .result-text-container {
+            background: linear-gradient(135deg, rgba(30, 60, 114, 0.05), rgba(212, 175, 55, 0.05));
+            padding: 25px;
+            border-radius: 12px;
+            border: 2px solid rgba(30, 60, 114, 0.1);
+            font-family: 'Courier New', Monaco, monospace;
+            font-size: 14px;
+            line-height: 1.6;
+            white-space: pre-line;
+            color: #2c3e50;
+            overflow-x: auto;
+        }
+
+        .result-text-container::before {
+            content: '';
+            position: absolute;
+            top: -2px;
+            left: -2px;
+            right: -2px;
+            bottom: -2px;
+            background: linear-gradient(45deg, #d4af37, #1e3c72, #d4af37);
+            border-radius: 14px;
+            z-index: -1;
+        }
+
+        .result-text-container {
+            position: relative;
+            background: #f8f9fa;
         }
 
         @keyframes slideIn {
@@ -243,83 +273,6 @@
             justify-content: center;
             color: white;
             font-weight: bold;
-        }
-
-        .athlete-info {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 25px;
-            margin-bottom: 25px;
-        }
-
-        .info-card {
-            background: rgba(248, 249, 250, 0.8);
-            padding: 20px;
-            border-radius: 12px;
-            border: 1px solid rgba(42, 82, 152, 0.1);
-        }
-
-        .info-card h4 {
-            color: #1e3c72;
-            margin-bottom: 15px;
-            font-size: 1.1em;
-            border-bottom: 2px solid #d4af37;
-            padding-bottom: 5px;
-        }
-
-        .info-item {
-            display: flex;
-            justify-content: space-between;
-            margin-bottom: 10px;
-            padding: 8px 0;
-            border-bottom: 1px solid rgba(0, 0, 0, 0.05);
-        }
-
-        .info-item:last-child {
-            border-bottom: none;
-        }
-
-        .info-label {
-            font-weight: 500;
-            color: #666;
-        }
-
-        .info-value {
-            font-weight: 600;
-            color: #1e3c72;
-        }
-
-        .ranking-badge {
-            display: inline-block;
-            padding: 8px 16px;
-            background: linear-gradient(135deg, #d4af37, #b8941f);
-            color: white;
-            border-radius: 20px;
-            font-weight: 600;
-            font-size: 0.9em;
-        }
-
-        .no-ranking-badge {
-            background: linear-gradient(135deg, #6c757d, #495057);
-        }
-
-        .benefits-section {
-            background: linear-gradient(135deg, rgba(212, 175, 55, 0.1), rgba(30, 60, 114, 0.1));
-            padding: 20px;
-            border-radius: 12px;
-            border: 2px solid rgba(212, 175, 55, 0.3);
-        }
-
-        .benefits-section h4 {
-            color: #1e3c72;
-            margin-bottom: 10px;
-            font-size: 1.1em;
-        }
-
-        .benefits-text {
-            color: #495057;
-            font-style: italic;
-            line-height: 1.5;
         }
 
         .status-message {
@@ -441,69 +394,8 @@
                 Ranking Results
             </h3>
             
-            <div class="athlete-info">
-                <div class="info-card">
-                    <h4>Athlete Information</h4>
-                    <div class="info-item">
-                        <span class="info-label">Name:</span>
-                        <span class="info-value" id="athleteName">-</span>
-                    </div>
-                    <div class="info-item">
-                        <span class="info-label">Age Group:</span>
-                        <span class="info-value" id="ageGroup">-</span>
-                    </div>
-                    <div class="info-item">
-                        <span class="info-label">Age:</span>
-                        <span class="info-value" id="age">-</span>
-                    </div>
-                    <div class="info-item">
-                        <span class="info-label">Gender:</span>
-                        <span class="info-value" id="athleteGender">-</span>
-                    </div>
-                </div>
-
-                <div class="info-card">
-                    <h4>Competition Results</h4>
-                    <div class="info-item">
-                        <span class="info-label">Best Sinclair:</span>
-                        <span class="info-value" id="bestSinclair">-</span>
-                    </div>
-                    <div class="info-item" id="totalRow">
-                        <span class="info-label">Total:</span>
-                        <span class="info-value" id="totalWeight">-</span>
-                    </div>
-                    <div class="info-item" id="competitionRow">
-                        <span class="info-label">Competition:</span>
-                        <span class="info-value" id="competition">-</span>
-                    </div>
-                    <div class="info-item" id="dateRow">
-                        <span class="info-label">Date:</span>
-                        <span class="info-value" id="competitionDate">-</span>
-                    </div>
-                </div>
-            </div>
-
-            <div class="info-card">
-                <h4>Ranking Status</h4>
-                <div class="info-item">
-                    <span class="info-label">Current Ranking:</span>
-                    <span class="info-value">
-                        <span class="ranking-badge" id="rankingBadge">-</span>
-                    </span>
-                </div>
-                <div class="info-item">
-                    <span class="info-label">Threshold Required:</span>
-                    <span class="info-value" id="threshold">-</span>
-                </div>
-                <div class="info-item">
-                    <span class="info-label">Status:</span>
-                    <span class="info-value" id="qualificationStatus">-</span>
-                </div>
-            </div>
-
-            <div class="benefits-section" id="benefitsSection">
-                <h4>Benefits & Opportunities</h4>
-                <div class="benefits-text" id="benefitsText">-</div>
+            <div class="result-text-container" id="resultTextContainer">
+                <!-- Formatted text will be displayed here -->
             </div>
         </div>
     </div>
@@ -554,53 +446,8 @@
         }
 
         function displayResults(data) {
-            const athlete = data.athlete;
-            const ranking = data.ranking;
-            
-            // Athlete information
-            document.getElementById('athleteName').textContent = athlete.name;
-            document.getElementById('ageGroup').textContent = ranking.ageGroup.toUpperCase();
-            document.getElementById('age').textContent = ranking.age;
-            document.getElementById('athleteGender').textContent = ranking.gender === 'M' ? 'Male' : 'Female';
-            
-            // Competition results
-            document.getElementById('bestSinclair').textContent = athlete.bestResult.sinclair.toFixed(1);
-            
-            // Hide/show competition specific fields for new athletes
-            const totalRow = document.getElementById('totalRow');
-            const competitionRow = document.getElementById('competitionRow');
-            const dateRow = document.getElementById('dateRow');
-            
-            if (athlete.bestResult.total) {
-                document.getElementById('totalWeight').textContent = athlete.bestResult.total + ' kg';
-                document.getElementById('competition').textContent = athlete.bestResult.competition || 'N/A';
-                document.getElementById('competitionDate').textContent = athlete.bestResult.date || 'N/A';
-                totalRow.style.display = 'flex';
-                competitionRow.style.display = 'flex';
-                dateRow.style.display = 'flex';
-            } else {
-                totalRow.style.display = 'none';
-                competitionRow.style.display = 'none';
-                dateRow.style.display = 'none';
-            }
-            
-            // Ranking information
-            const rankingBadge = document.getElementById('rankingBadge');
-            rankingBadge.textContent = ranking.rankName;
-            
-            if (ranking.qualifies) {
-                rankingBadge.className = 'ranking-badge';
-                document.getElementById('qualificationStatus').textContent = '✓ Qualified';
-                document.getElementById('qualificationStatus').style.color = '#28a745';
-            } else {
-                rankingBadge.className = 'ranking-badge no-ranking-badge';
-                document.getElementById('qualificationStatus').textContent = '✗ Not Qualified';
-                document.getElementById('qualificationStatus').style.color = '#dc3545';
-            }
-            
-            document.getElementById('threshold').textContent = ranking.threshold.toFixed(1);
-            document.getElementById('benefitsText').textContent = ranking.benefits || 'No benefits available at this level';
-            
+            // Simply display the formatted text
+            document.getElementById('resultTextContainer').textContent = data.resultText;
             showResults();
         }
 
@@ -694,7 +541,6 @@
                 lookupBtn.classList.remove('loading');
             }
         });
-
     </script>
 </body>
 </html>
