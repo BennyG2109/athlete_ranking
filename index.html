@@ -421,6 +421,7 @@
         </div>
         
         <form id="lookupForm">
+            <!--
             <div class="athlete-type-selector">
                 <label class="type-option active">
                     <input type="radio" name="athleteType" value="registered" checked>
@@ -431,6 +432,7 @@
                     <span>New Athlete</span>
                 </label>
             </div>
+            -->
 
             <div class="form-section" id="registeredSection">
                 <h3>Registered Athlete Information</h3>
@@ -446,6 +448,7 @@
                 </div>
             </div>
 
+            <!--
             <div class="form-section" id="newAthleteSection" style="display: none;">
                 <h3>New Athlete Information</h3>
                 <div class="form-row">
@@ -469,6 +472,7 @@
                     </div>
                 </div>
             </div>
+            -->
 
             <button type="submit" class="lookup-button" id="lookupBtn">
                 <div class="loading-spinner"></div>
@@ -497,6 +501,7 @@
         const API_ENDPOINT = 'https://us-central1-weightlifting-ranking-database.cloudfunctions.net/teams_ranking';
         
         // Handle athlete type selection
+        /*
         document.querySelectorAll('input[name="athleteType"]').forEach(radio => {
             radio.addEventListener('change', function() {
                 document.querySelectorAll('.type-option').forEach(option => {
@@ -518,6 +523,7 @@
                 hideResults();
             });
         });
+        */
 
         function showStatusMessage(message, type = 'error') {
             const statusDiv = document.getElementById('statusMessage');
@@ -584,7 +590,7 @@
             e.preventDefault();
             
             const lookupBtn = document.getElementById('lookupBtn');
-            const athleteType = document.querySelector('input[name="athleteType"]:checked').value;
+            const athleteType = 'registered'; //document.querySelector('input[name="athleteType"]:checked').value;
             
             let payload = {
                 action: "LOOKUP_ATHLETE",
@@ -610,7 +616,7 @@
                 payload.athleteId = athleteId;
                 payload.birthYear = parseInt(birthYear);
                 
-            } else {
+            } /*else {
                 const gender = document.getElementById('gender').value;
                 const newBirthYear = document.getElementById('newBirthYear').value;
                 const sinclairScore = document.getElementById('sinclairScore').value;
@@ -633,7 +639,7 @@
                 payload.gender = gender;
                 payload.birthYear = parseInt(newBirthYear);
                 payload.sinclairScore = parseFloat(sinclairScore);
-            }
+            }*/
             
             // Show loading state
             lookupBtn.disabled = true;
